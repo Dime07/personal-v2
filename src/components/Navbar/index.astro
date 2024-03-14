@@ -1,0 +1,33 @@
+---
+const NAVIGATION = [
+  {
+    title: "About",
+  },
+  {
+    title: "Last Projects",
+  },
+  {
+    title: "Experience",
+  },
+  {
+    title: "Contact",
+  },
+];
+---
+
+<nav
+  id="navbar"
+  class="bg-black w-full h-[60px] flex justify-center items-center px-5"
+>
+  <ul class="flex justify-between w-full">
+    {
+      NAVIGATION.map((item) => (
+        <li>
+          <a href="/" class="hover:text-white text-white text-xl font-medium">
+            {item.title}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</nav>
