@@ -53,14 +53,14 @@ const Marquee = ({
         variants={direction === "left" ? marqueeLeft : marqueeRight}
         animate="animate"
       >
-        <p
+        <h1
           className={clsx(
             "uppercase text-[60px]/[70px] font-semibold",
             textClassName,
           )}
         >
           {Array(10).fill(text).join(" ")}
-        </p>
+        </h1>
       </motion.div>
     </div>
   );
@@ -68,14 +68,15 @@ const Marquee = ({
 
 const MarqueeWrapper = () => {
   return (
-    <div className="pt-11">
-      <Marquee text="Dimas Rafi Frontend Developer" className="z-[2]" />
-      <Marquee
-        text="Welcome to my website"
-        className="rotate-[5deg] z-[1] w-[calc(100%+20px)]"
-        textClassName="text-stroke text-white"
-        direction="right"
-      />
+    <div className="pt-11 relative">
+      <Marquee text="Dimas Rafi Frontend Developer" className="z-[3]" />
+      <div className="absolute left-0 rotate-[3deg] -bottom-[80px] z-[2] w-full ">
+        <Marquee
+          text="Welcome to my website"
+          textClassName="text-stroke text-white"
+          direction="right"
+        />
+      </div>
     </div>
   );
 };

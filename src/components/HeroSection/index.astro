@@ -1,7 +1,22 @@
 ---
 import MarqueeWrapper from "./MarqueeWrapper";
+import MovingGradient from "./MovingGradient";
+import Navbar from "@components/Navbar/index.astro";
 ---
 
-<section class="bg-black min-h-screen shadow">
+<section
+  class="bg-black shadow min-h-screen flex flex-col justify-between overflow-hidden relative bg-grid-white/[0.2]"
+>
+  <div
+    class="absolute pointer-events-none inset-0 flex items-center justify-center bg-black [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"
+  >
+  </div>
   <MarqueeWrapper client:load />
+  <div class="max-w-[1440px] w-full mx-auto relative z-[2]">
+    <h2 class="capitalize text-7xl leading-snug font-medium text-white ml-5">
+      an aspiring<br /> Frontend Engineer <br />on a mission to <br />master the
+      craft.
+    </h2>
+  </div>
+  <Navbar />
 </section>
