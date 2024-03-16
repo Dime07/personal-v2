@@ -1,9 +1,10 @@
 ---
+import HeroSection from "@components/HeroSection/index.astro";
 import Navbar from "@components/Navbar/index.astro";
 import BaseLayout from "@layouts/BaseLayout.astro";
-const pageTitle = "Home Page";
 ---
 
-<BaseLayout>
+<BaseLayout pageTitle="Dimas Rafi | Frontend Developer">
+  <HeroSection />
   <Navbar />
 </BaseLayout>
