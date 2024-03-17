@@ -1,6 +1,5 @@
 ---
 import MarqueeWrapper from "./MarqueeWrapper";
-import MovingGradient from "./MovingGradient";
 import Navbar from "@components/Navbar/index.astro";
 ---
 
@@ -13,9 +12,12 @@ import Navbar from "@components/Navbar/index.astro";
   </div>
   <MarqueeWrapper client:load />
   <div class="max-w-[1440px] w-full mx-auto relative z-[2]">
-    <h2 class="capitalize text-7xl leading-snug font-medium text-white ml-5">
-      an aspiring<br /> Frontend Engineer <br />on a mission to <br />master the
-      craft.
+    <h2
+      class="capitalize md:text-7xl text-4xl md:text-left text-center leading-snug font-medium text-white md:ml-5"
+    >
+      an aspiring<br />
+      <span class="bg-white text-black">Frontend Engineer</span>
+      <br />on a mission to <br />master the craft.
     </h2>
   </div>
   <Navbar />

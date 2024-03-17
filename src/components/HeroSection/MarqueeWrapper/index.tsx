@@ -44,7 +44,7 @@ const Marquee = ({
   return (
     <div
       className={clsx(
-        "bg-white py-2 relative w-full max-w-screen overflow-x-hidden h-[86px] shadow-md",
+        "bg-white py-2 relative w-full max-w-screen overflow-x-hidden h-11 md:h-[86px] shadow-md",
         className,
       )}
     >
@@ -55,7 +55,7 @@ const Marquee = ({
       >
         <h1
           className={clsx(
-            "uppercase text-[60px]/[70px] font-semibold",
+            "uppercase md:text-[60px]/[70px] text-2xl font-semibold",
             textClassName,
           )}
         >
@@ -70,7 +70,7 @@ const MarqueeWrapper = () => {
   return (
     <div className="pt-11 relative">
       <Marquee text="Dimas Rafi Frontend Developer" className="z-[3]" />
-      <div className="absolute left-0 rotate-[3deg] -bottom-[80px] z-[2] w-full ">
+      <div className="absolute left-0 rotate-[3deg] -bottom-11 md:-bottom-[80px] z-[2] w-full ">
         <Marquee
           text="Welcome to my website"
           textClassName="text-stroke text-white"
