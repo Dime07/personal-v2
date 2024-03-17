@@ -1,5 +1,5 @@
 ---
-import Navbar from "../components/Navbar/index.astro";
+import Footer from "../components/Footer/index.astro";
 const { pageTitle } = Astro.props;
 ---
 
@@ -17,7 +17,8 @@ const { pageTitle } = Astro.props;
     />
     <title>{pageTitle}</title>
   </head>
-  <body class="relative">
+  <body class="relative scroll-smooth">
     <slot />
+    <Footer />
   </body>
 </html>

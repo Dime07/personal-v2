@@ -1,0 +1,54 @@
+---
+
+---
+
+<footer class="bg-black border-t border-white text-white">
+  <div class="max-w-[1440px] mx-auto flex justify-between py-8 px-5">
+    <p>©2024 - Dimas Rafi</p>
+    <ul class="flex gap-5 items-center">
+      <li class="hover:underline">
+        <a
+          href="https://www.linkedin.com/in/dimas-rafi/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Linkedin
+        </a>
+      </li>
+      <li class="hover:underline">
+        <a
+          href="https://www.instagram.com/dime__/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Instagram
+        </a>
+      </li>
+      <li class="hover:underline">
+        <a
+          href="https://twitter.com/dime_ez"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Twitter
+        </a>
+      </li>
+    </ul>
+    <button type="button" id="btn-back-to-top"> Back to top </button>
+  </div>
+</footer>
+
+<script>
+  const btnBackToTop = document.querySelector("#btn-back-to-top");
+  btnBackToTop.addEventListener("click", (event) => {
+    event.preventDefault(); // Prevent default jump behavior
+
+    const scrollOptions = {
+      behavior: "smooth",
+      block: "start",
+      top: 0,
+    };
+
+    window.scrollTo(scrollOptions);
+  });
+</script>
