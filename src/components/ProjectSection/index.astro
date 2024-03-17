@@ -1,0 +1,90 @@
+---
+import { parseProjectCategory } from "@utils/parser.ts";
+import ShareIcon from "@icons/shareIcon";
+
+interface Projects {
+  id: string;
+  publishedAt: string;
+  title: string;
+  category: string;
+  link: string;
+  thumbnail: {
+    url: string;
+  };
+}
+
+const query = {
+  method: "POST",
+  headers: {
+    Authorization: `Bearer ${import.meta.env.HYGRAPH_TOKEN}`,
+    "Content-Type": "application/json",
+  },
+  body: JSON.stringify({
+    query: `{
+        portofolios{
+            id,
+            publishedAt,
+            title,
+            category,
+            link,
+            thumbnail{
+                url
+            }
+        }
+    }`,
+  }),
+};
+
+const response = await fetch(import.meta.env.HYGRAPH_ENDPOINT, query);
+const json = await response.json();
+const projects: Projects[] = json.data.portofolios;
+---
+
+<section
+  id="projects"
+  class="bg-black shadow min-h-screen flex flex-col justify-between overflow-hidden relative bg-grid-white/[0.2]"
+>
+  <div
+    class="absolute pointer-events-none inset-0 flex items-center justify-center bg-black [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"
+  >
+  </div>
+  <div
+    class="max-w-[1440px] w-full mx-auto relative z-[2] py-20 px-5 text-white grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4"
+  >
+    <div
+      class="bg-black px-2 py-4 rounded-xl border border-white flex flex-col md:col-span-2 items-center justify-center"
+    >
+      <h2 class="md:text-5xl text-xl font-semibold md:text-left text-center">
+        Well. <br />
+        Here's my <span class="underline underline-offset-1"
+          >latest project</span
+        > i have been doing
+      </h2>
+    </div>
+    {
+      projects.map((project) => (
+        <div class="bg-black p-2 rounded-xl border border-white flex flex-col">
+          <img
+            src={project.thumbnail.url}
+            alt={project.title}
+            class="w-full object-cover aspect-video h-[200px] md:h-[300px] rounded-md"
+            width="300"
+            height="300"
+          />
+
+          <div class="flex justify-between  py-3">
+            <div class="flex flex-col gap-2">
+              <p class="md:text-2xl text-xl font-semibold ">{project.title}</p>
+              <p class="text-xs w-fit bg-white py-1 px-2 text-black rounded-sm inline-flex justify-center items-center font-medium capitalize">
+                {parseProjectCategory(project.category)}
+              </p>
+            </div>
+            <a href={project.link} target="_blank">
+              <ShareIcon />
+            </a>
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</section>
