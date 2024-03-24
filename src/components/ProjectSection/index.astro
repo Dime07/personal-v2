@@ -22,7 +22,7 @@ const query = {
   },
   body: JSON.stringify({
     query: `{
-        portofolios{
+        portofolios(orderBy: publishedAt_DESC){
             id,
             publishedAt,
             title,
