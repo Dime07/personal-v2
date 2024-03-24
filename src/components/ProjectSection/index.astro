@@ -1,6 +1,7 @@
 ---
 import { parseProjectCategory } from "@utils/parser.ts";
 import ShareIcon from "@icons/shareIcon";
+import { Image } from "astro:assets";
 
 interface Projects {
   id: string;
@@ -64,12 +65,13 @@ const projects: Projects[] = json.data.portofolios;
     {
       projects.map((project) => (
         <div class="bg-black p-2 rounded-xl border border-white flex flex-col">
-          <img
+          <Image
             src={project.thumbnail.url}
             alt={project.title}
             class="w-full object-cover aspect-video h-[200px] md:h-[300px] rounded-md"
             width="300"
             height="300"
+            loading="eager"
           />
 
           <div class="flex justify-between  py-3">
@@ -79,7 +81,7 @@ const projects: Projects[] = json.data.portofolios;
                 {parseProjectCategory(project.category)}
               </p>
             </div>
-            <a href={project.link} target="_blank">
+            <a href={project.link} target="_blank" aria-label="link project">
               <ShareIcon />
             </a>
           </div>
