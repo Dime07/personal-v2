@@ -40,12 +40,12 @@
 
 <script>
   const btnBackToTop = document.querySelector("#btn-back-to-top");
-  btnBackToTop.addEventListener("click", (event) => {
+
+  btnBackToTop?.addEventListener("click", (event) => {
     event.preventDefault(); // Prevent default jump behavior
 
-    const scrollOptions = {
+    const scrollOptions: ScrollToOptions = {
       behavior: "smooth",
-      block: "start",
       top: 0,
     };
 
