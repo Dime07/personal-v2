@@ -2,13 +2,12 @@
   "extends": "astro/tsconfigs/strict",
   "compilerOptions": {
     "verbatimModuleSyntax": true,
-    "baseUrl": "D:/Kerjaan/PERSONAL/porto/personal-v2",
     "paths": {
-      "@components/*": ["src/components/*"],
-      "@layouts/*": ["src/layouts/*"],
-      "@styles/*": ["src/styles/*"],
-      "@utils/*": ["src/utils/*"],
-      "@icons/*": ["src/icons/*"]
+      "@components/*": ["./src/components/*"],
+      "@layouts/*": ["./src/layouts/*"],
+      "@styles/*": ["./src/styles/*"],
+      "@utils/*": ["./src/utils/*"],
+      "@icons/*": ["./src/icons/*"]
     },
     "jsx": "react-jsx",
     "jsxImportSource": "react"
