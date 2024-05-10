@@ -58,6 +58,7 @@ const Marquee = ({
             "uppercase md:text-[60px]/[70px] text-2xl font-semibold",
             textClassName,
           )}
+          aria-hidden="true"
         >
           {Array(10).fill(text).join(" ")}
         </h1>
