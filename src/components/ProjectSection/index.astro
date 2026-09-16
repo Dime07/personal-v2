@@ -1,44 +1,10 @@
 ---
-import { parseProjectCategory } from "@utils/parser.ts";
+import { getCollection } from "astro:content";
 import ShareIcon from "@icons/shareIcon";
-import { Image } from "astro:assets";
 
-interface Projects {
-  id: string;
-  publishedAt: string;
-  title: string;
-  category: string;
-  link: string;
-  thumbnail: {
-    url: string;
-  };
-}
-
-const query = {
-  method: "POST",
-  headers: {
-    Authorization: `Bearer ${import.meta.env.HYGRAPH_TOKEN}`,
-    "Content-Type": "application/json",
-  },
-  body: JSON.stringify({
-    query: `{
-        portofolios(orderBy: publishedAt_DESC){
-            id,
-            publishedAt,
-            title,
-            category,
-            link,
-            thumbnail{
-                url
-            }
-        }
-    }`,
-  }),
-};
-
-const response = await fetch(import.meta.env.HYGRAPH_ENDPOINT, query);
-const json = await response.json();
-const projects: Projects[] = json.data.portofolios;
+const projects = (await getCollection("projects")).sort(
+  (a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf(),
+);
 ---
 
 <section
@@ -64,28 +30,63 @@ const projects: Projects[] = json.data.portofolios;
     </div>
     {
       projects.map((project) => (
-        <div class="bg-black p-2 rounded-xl border border-white flex flex-col">
-          <Image
-            src={project.thumbnail.url}
-            alt={project.title}
-            class="w-full object-cover aspect-video h-[200px] md:h-[300px] rounded-md"
-            width="300"
-            height="300"
-            loading="eager"
+        <article class="bg-black p-2 rounded-xl border border-white flex flex-col group">
+          <img
+            src={project.data.thumbnail}
+            alt={`Preview of ${project.data.title}`}
+            class="w-full object-cover aspect-video h-[200px] md:h-[260px] rounded-md bg-white/10"
+            width="600"
+            height="338"
+            loading="lazy"
           />
 
-          <div class="flex justify-between  py-3">
-            <div class="flex flex-col gap-2">
-              <p class="md:text-2xl text-xl font-semibold ">{project.title}</p>
-              <p class="text-xs w-fit bg-white py-1 px-2 text-black rounded-sm inline-flex justify-center items-center font-medium capitalize">
-                {parseProjectCategory(project.category)}
-              </p>
+          <div class="flex flex-1 flex-col px-1 pt-4 pb-2">
+            <div class="flex items-start justify-between gap-4">
+              <div class="space-y-2">
+                <p class="md:text-2xl text-xl font-semibold">
+                  {project.data.title}
+                </p>
+                <p class="text-xs w-fit bg-white py-1 px-2 text-black rounded-sm inline-flex justify-center items-center font-medium capitalize">
+                  {project.data.category.replaceAll("_", " ")}
+                </p>
+              </div>
+              <a
+                href={project.data.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`View ${project.data.title}`}
+                class="shrink-0 rounded-md p-1 transition-colors hover:bg-white hover:text-black"
+              >
+                <ShareIcon />
+              </a>
             </div>
-            <a href={project.link} target="_blank" aria-label="link project">
-              <ShareIcon />
-            </a>
+
+            <p class="mt-4 text-sm leading-6 text-white/70">
+              {project.data.description}
+            </p>
+
+            <div class="mt-5 flex items-end justify-between gap-4 text-xs text-white/60">
+              <div>
+                {project.data.role && <p>{project.data.role}</p>}
+                <time datetime={project.data.publishedAt.toISOString()}>
+                  {project.data.publishedAt.getFullYear()}
+                </time>
+              </div>
+              {project.data.technologies.length > 0 && (
+                <ul
+                  class="flex flex-wrap justify-end gap-1.5"
+                  aria-label="Technologies used"
+                >
+                  {project.data.technologies.map((technology) => (
+                    <li class="rounded-full border border-white/20 px-2 py-1 text-white/80">
+                      {technology}
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
           </div>
-        </div>
+        </article>
       ))
     }
   </div>
