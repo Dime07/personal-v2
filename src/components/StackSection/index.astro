@@ -1,0 +1,53 @@
+---
+const STACK = [
+  {
+    label: "JavaScript",
+    detail: "Interactive web experiences",
+  },
+  {
+    label: "TypeScript",
+    detail: "Maintainable frontend code",
+  },
+  {
+    label: "React",
+    detail: "Component-driven interfaces",
+  },
+  {
+    label: "Astro",
+    detail: "Fast content-first websites",
+  },
+  {
+    label: "Tailwind CSS",
+    detail: "Thoughtful, responsive UI",
+  },
+  {
+    label: "HTML & CSS",
+    detail: "Solid web foundations",
+  },
+];
+---
+
+<section id="stack" class="bg-black border-y border-white/20 text-white">
+  <div class="max-w-[1440px] w-full mx-auto px-5 py-20">
+    <div class="max-w-2xl">
+      <p class="text-sm uppercase tracking-[0.2em] text-white/60">
+        What I work with
+      </p>
+      <h2 class="mt-3 md:text-5xl text-3xl font-semibold">
+        Building thoughtful interfaces with a modern frontend stack.
+      </h2>
+    </div>
+
+    <ul class="mt-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
+      {
+        STACK.map((item, index) => (
+          <li class="rounded-xl border border-white/30 p-5 transition-colors hover:bg-white hover:text-black">
+            <span class="text-sm text-current/60">0{index + 1}</span>
+            <h3 class="mt-8 text-2xl font-semibold">{item.label}</h3>
+            <p class="mt-2 text-sm text-current/70">{item.detail}</p>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>
