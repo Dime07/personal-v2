@@ -1,24 +1,20 @@
 ---
 import MarqueeWrapper from "./MarqueeWrapper";
+import HeroHeading from "./HeroHeading";
 import Navbar from "@components/Navbar/index.astro";
 ---
 
 <section
   id="hero"
-  class="bg-black shadow min-h-screen flex flex-col justify-between overflow-hidden relative bg-grid-white/[0.2]"
+  class="bg-black shadow min-h-screen flex flex-col overflow-hidden relative pb-[60px] bg-grid-white/[0.2]"
 >
   <div
     class="absolute pointer-events-none inset-0 flex items-center justify-center bg-black [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"
   >
   </div>
   <MarqueeWrapper />
-  <div class="max-w-[1440px] w-full mx-auto relative z-[2] px-5">
-    <h1
-      class="max-w-5xl text-balance text-center text-5xl font-semibold leading-[0.98] tracking-tight text-white selection:bg-white selection:text-black sm:text-6xl md:text-left md:text-8xl"
-    >
-      <span class="bg-white px-2 text-black">Frontend Engineer in Indonesia</span>
-      <br />building clear, fast, and considered web experiences with React and Next.js.
-    </h1>
+  <div class="max-w-[1440px] w-full mx-auto relative z-[2] px-5 flex flex-1 items-center py-12">
+    <HeroHeading client:load />
   </div>
   <Navbar />
 </section>
