@@ -8,3 +8,33 @@
     rgb(0, 0, 0) 0.283662px -0.958924px 0px,
     rgb(0, 0, 0) 0.96017px -0.279415px 0px;
 }
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee-scroll 34s linear infinite;
+  transform: translate3d(0, 0, 0);
+  will-change: transform;
+}
+
+.marquee-track--reverse {
+  animation-direction: reverse;
+}
+
+.marquee-group {
+  display: flex;
+  flex: none;
+  padding-right: 1.5rem;
+}
+
+@keyframes marquee-scroll {
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+  }
+}

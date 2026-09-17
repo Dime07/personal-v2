@@ -1,34 +1,5 @@
 import clsx from "clsx";
-import { motion } from "framer-motion";
 import "@styles/text.css";
-
-const marqueeLeft = {
-  animate: {
-    x: [0, -1035],
-    transition: {
-      x: {
-        repeat: Infinity,
-        repeatType: "loop",
-        duration: 10,
-        ease: "linear",
-      },
-    },
-  },
-};
-
-const marqueeRight = {
-  animate: {
-    x: [-1035, 0],
-    transition: {
-      x: {
-        repeat: Infinity,
-        repeatType: "loop",
-        duration: 10,
-        ease: "linear",
-      },
-    },
-  },
-};
 
 const Marquee = ({
   text,
@@ -48,21 +19,26 @@ const Marquee = ({
         className,
       )}
     >
-      <motion.div
-        className="absolute whitespace-nowrap"
-        variants={direction === "left" ? marqueeLeft : marqueeRight}
-        animate="animate"
+      <div
+        className={clsx(
+          "marquee-track",
+          direction === "right" && "marquee-track--reverse",
+        )}
+        aria-hidden="true"
       >
-        <h1
-          className={clsx(
-            "uppercase md:text-[60px]/[70px] text-2xl font-semibold",
-            textClassName,
-          )}
-          aria-hidden="true"
-        >
-          {Array(10).fill(text).join(" ")}
-        </h1>
-      </motion.div>
+        {Array.from({ length: 2 }, (_, groupIndex) => (
+          <div className="marquee-group" key={groupIndex}>
+            <span
+              className={clsx(
+                "uppercase md:text-[60px]/[70px] text-2xl font-semibold",
+                textClassName,
+              )}
+            >
+              {Array(6).fill(text).join(" · ")}
+            </span>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
