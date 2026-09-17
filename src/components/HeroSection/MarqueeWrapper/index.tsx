@@ -31,7 +31,7 @@ const Marquee = ({
             <span
               className={clsx(
                 "uppercase md:text-[60px]/[70px] text-2xl font-semibold",
-                textClassName,
+                textClassName ?? "text-black",
               )}
             >
               {Array(6).fill(text).join(" · ")}

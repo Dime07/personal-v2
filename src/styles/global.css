@@ -1,0 +1,17 @@
+:root {
+  color-scheme: dark;
+  background-color: #000;
+}
+
+html {
+  background-color: #000;
+  overscroll-behavior-y: none;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100dvh;
+  overflow-x: clip;
+  background-color: #000;
+  overscroll-behavior-y: none;
+}
