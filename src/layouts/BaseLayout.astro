@@ -1,14 +1,47 @@
 ---
 import Footer from "../components/Footer/index.astro";
+import "@styles/global.css";
 const { pageTitle } = Astro.props;
+const siteUrl = "https://dimasrafi.my.id";
+const description =
+  "Dimas Rafi is a Frontend Engineer in Indonesia specializing in React, Next.js, TypeScript, and responsive web experiences. Available to connect for frontend roles and collaborations.";
+const canonicalUrl = new URL(Astro.url.pathname, siteUrl);
+const socialImage = new URL("/previewImage.jpg", siteUrl);
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Dimas Rafi",
+  url: siteUrl,
+  image: socialImage.href,
+  jobTitle: "Frontend Engineer",
+  description,
+  address: {
+    "@type": "PostalAddress",
+    addressCountry: "ID",
+  },
+  sameAs: [
+    "https://www.linkedin.com/in/dimas-rafi/",
+    "https://www.instagram.com/dime__/",
+  ],
+  knowsAbout: [
+    "Frontend development",
+    "React",
+    "Next.js",
+    "TypeScript",
+    "JavaScript",
+    "Responsive web design",
+    "Web performance",
+  ],
+};
 ---
 
-<html lang="en">
+<html lang="en-ID">
   <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.jpg" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
+    <link rel="canonical" href={canonicalUrl} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -19,40 +52,44 @@ const { pageTitle } = Astro.props;
     <!-- Meta tags -->
     <meta
       name="description"
-      content="Hi! I'm Dimas Rafi, a passionate Frontend Engineer based in Indonesia, on a journey to continuously refine my skills and become a master of the craft. I possess strong expertise in HTML, JavaScript, and CSS, with a focus on leveraging Tailwind CSS for efficient and scalable UI development."
+      content={description}
     />
     <meta name="author" content="Dimas Rafi" />
     <meta
       name="keywords"
-      content="web, developer, dimas rafi, frontend, freelance"
+      content="Dimas Rafi, frontend engineer Indonesia, frontend developer Indonesia, React developer, Next.js developer, TypeScript developer, frontend talent"
     />
 
     <!-- Google / Search Engine Tags -->
-    <meta itemprop="name" content="Dimas Rafi | Frontend Developer" />
+    <meta itemprop="name" content={pageTitle} />
     <meta
       itemprop="description"
-      content="Hi! I'm Dimas Rafi, a passionate Frontend Engineer based in Indonesia, on a journey to continuously refine my skills and become a master of the craft. I possess strong expertise in HTML, JavaScript, and CSS, with a focus on leveraging Tailwind CSS for efficient and scalable UI development."
+      content={description}
     />
-    <meta itemprop="image" content="/previewImage.jpg" />
+    <meta itemprop="image" content={socialImage} />
 
     <!-- Facebook Meta Tags -->
-    <meta property="og:url" content="https://dimasrafi.my.id" />
+    <meta property="og:url" content={canonicalUrl} />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Dimas Rafi | Frontend Developer" />
+    <meta property="og:site_name" content="Dimas Rafi" />
+    <meta property="og:locale" content="en_ID" />
+    <meta property="og:title" content={pageTitle} />
     <meta
       property="og:description"
-      content="Hi! I'm Dimas Rafi, a passionate Frontend Engineer based in Indonesia, on a journey to continuously refine my skills and become a master of the craft. I possess strong expertise in HTML, JavaScript, and CSS, with a focus on leveraging Tailwind CSS for efficient and scalable UI development."
+      content={description}
     />
-    <meta property="og:image" content="/previewImage.jpg" />
+    <meta property="og:image" content={socialImage} />
+    <meta property="og:image:alt" content="Dimas Rafi, Frontend Engineer" />
 
     <!-- Twitter Meta Tags -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Dimas Rafi | Frontend Developer" />
+    <meta name="twitter:title" content={pageTitle} />
     <meta
       name="twitter:description"
-      content="Hi! I'm Dimas Rafi, a passionate Frontend Engineer based in Indonesia, on a journey to continuously refine my skills and become a master of the craft. I possess strong expertise in HTML, JavaScript, and CSS, with a focus on leveraging Tailwind CSS for efficient and scalable UI development."
+      content={description}
     />
-    <meta name="twitter:image" content="/previewImage.jpg" />
+    <meta name="twitter:image" content={socialImage} />
+    <script type="application/ld+json" set:html={JSON.stringify(personSchema)} />
     <title>{pageTitle}</title></head
   >
 

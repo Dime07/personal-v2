@@ -1,4 +1,2 @@
-interface ImportMetaEnv {
-  readonly HYGRAPH_ENDPOINT: string;
-  readonly HYGRAPH_TOKEN: string;
-}
+/// <reference path="../.astro/types.d.ts" />
+/// <reference types="astro/client" />

@@ -1,0 +1,63 @@
+---
+const STACK = [
+  {
+    label: "JavaScript",
+    detail: "Interactive web experiences",
+  },
+  {
+    label: "TypeScript",
+    detail: "Maintainable frontend code",
+  },
+  {
+    label: "React",
+    detail: "Component-driven interfaces",
+  },
+  {
+    label: "Next.js",
+    detail: "Production-ready React applications",
+  },
+  {
+    label: "Astro",
+    detail: "Fast content-first websites",
+  },
+  {
+    label: "Tailwind CSS",
+    detail: "Thoughtful, responsive UI",
+  },
+  {
+    label: "HTML & CSS",
+    detail: "Solid web foundations",
+  },
+];
+---
+
+<section id="stack" class="bg-black border-y border-white/20 text-white">
+  <div class="max-w-[1440px] w-full mx-auto px-5 py-20">
+    <div class="max-w-3xl">
+      <h2
+        class="text-balance text-3xl font-semibold leading-tight tracking-tight md:text-5xl"
+      >
+        A focused frontend toolkit for ideas that need to ship well.
+      </h2>
+      <p
+        class="mt-5 max-w-[62ch] text-base leading-7 text-white/75 md:text-lg md:leading-8"
+      >
+        Modern tools, chosen for the job: fast where it matters, flexible where
+        it counts, and maintainable for the next person who works on it.
+      </p>
+    </div>
+
+    <ul
+      class="mt-12 grid border-t border-white/20 sm:grid-cols-2 lg:grid-cols-3"
+    >
+      {
+        STACK.map((item) => (
+          <li class="border-b border-white/20 py-6 transition-colors hover:text-white/65 sm:px-6 sm:odd:border-r sm:odd:border-white/20 sm:first:pl-0 lg:border-r lg:border-white/20 lg:[&:nth-child(3n)]:border-r-0 lg:[&:nth-child(3n+1)]:pl-0">
+            <h3 class="text-2xl font-semibold tracking-tight">{item.label}</h3>
+            <p class="mt-2 text-sm leading-6 text-white/65">{item.detail}</p>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>
